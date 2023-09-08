@@ -5,10 +5,10 @@
  
 
 Yeni User ve Sudo yetkisi
-"""
+```bash
 $sudo adduser yeni_kullanici_adi
 $sudo usermod -aG sudo yeni_kullanici_adi
-"""
+```
  
 
 Kendi makinamizda Keygen olusturup bu adimlari takip ettik

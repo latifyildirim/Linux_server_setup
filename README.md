@@ -26,3 +26,20 @@ $sudo vi /etc/ssh/sshd_config  bu klasör altinda
 => PasswordAuthentication no 
 
 $sudo systemctl restart sshd   
+
+#IPv6 devre dışı bırakma
+
+sudo vi /etc/sysctl.conf
+// Dosyanın sonuna aşağıdaki satırları ekleyin:
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+// Değişiklikleri Kaydetme ve Sisteme Yükleme:
+sudo sysctl -p
+
+// IPv6 Devre Dışı Bırakılmasını Doğrulama:
+cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+#Eğer bu komut 1 çıktısı verirse, IPv6 başarıyla devre dışı bırakılmış demektir.
+ 

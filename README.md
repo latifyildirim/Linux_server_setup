@@ -6,29 +6,29 @@
 
 ### Yeni User ve Sudo yetkisi
 ```bash
-$ sudo adduser yeni_kullanici_adi
-$ sudo usermod -aG sudo yeni_kullanici_adi
+sudo adduser yeni_kullanici_adi
+sudo usermod -aG sudo yeni_kullanici_adi
 ```
  
 
 ### Kendi makinamizda Keygen olusturup bu adimlari takip ettik
 ```bash
-$ ssh-keygen -t rsa      
-$ ssh-copy-id username@server_ip
-$ ssh username@server_ip "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
+ssh-keygen -t rsa      
+ssh-copy-id username@server_ip
+ssh username@server_ip "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
 ```
  
 
 ### Serverda Config dosyasini degistiriyoruz
 ```bash
-$ sudo vi /etc/ssh/sshd_config  bu klasör altinda            
+sudo vi /etc/ssh/sshd_config  bu klasör altinda            
 => PubkeyAuthentication yes
 => PasswordAuthentication no 
-$ sudo systemctl restart sshd   
+sudo systemctl restart sshd   
 ```
 ### IPv6 devre dışı bırakma
 ```bash
-$ sudo vi /etc/sysctl.conf
+sudo vi /etc/sysctl.conf
 ```
 ### Dosyanın sonuna aşağıdaki satırları ekleyin:
 ```bash
@@ -51,4 +51,10 @@ sudo crontab -e
 * * * * * /path/to/your/command
 sudo chmod 600 /etc/crontab #Sadece root kullanıcısının cron yapılandırmasını düzenleyebilmesi için,
                             #cron yapılandırma dosyasının erişimini sınırlandirir.
+```
+### Task Manager Install:
+```bash
+wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm rpm -ihv epel-release-7-11.noarch.rpm
+sudo apt-get install htop
+htop
 ```

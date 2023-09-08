@@ -52,9 +52,47 @@ sudo crontab -e
 sudo chmod 600 /etc/crontab #Sadece root kullanıcısının cron yapılandırmasını düzenleyebilmesi için,
                             #cron yapılandırma dosyasının erişimini sınırlandirir.
 ```
-### Task Manager Install:
+### Firewall setup
+```bash
+sudo ufw enable
+sudo netstat -an | grep "LISTEN" # Açık olan portları daha kolay bulmak için
+sudo apt-get install net-tools   # Eger “netstat” yüklü degilse
+chmod +x ufw_ayar.sh             # ufw_ayar.sh dosyasini klasörde bulabilirsin.
+./ufw_ayar.sh
+```
+### Task Manager Install (htop):
 ```bash
 wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm rpm -ihv epel-release-7-11.noarch.rpm
 sudo apt-get install htop
 htop
+```
+### pm2 yüklemek icin nodejs in yüklü oldugundan emin olmali
+### nodejs kurulumu
+```bash
+cd ~
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_16.x $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+sudo apt update
+sudo apt install nodejs -y
+
+node -v
+npm -v
+```
+### Eger pakerletde sorun varsa düzeltme komutu kullan
+```bash
+sudo apt --fix-broken install
+sudo apt-get autoremove # Bagli paketleri kaldirma
+sudo apt update
+sudo apt upgrade #Sistem güncelleme
+sudo apt install aptitude #Sorun yasanmaya devam ederse paket yöneticisi degistirme
+sudo aptitude install nodejs npm
+node -v
+npm -v
+```
+### pm2 yükleme ###
+```bash
+sudo npm install pm2 -g
+pm2 --version
+pm2 start app.js
 ```

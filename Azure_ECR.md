@@ -18,7 +18,7 @@ Azure Container Registry (ACR) ve Azure Kubernetes Service (AKS) gibi Azure hizm
    - Aynı zamanda Deployment YAML dosyanızın `spec.containers.imagePullSecrets` alanını oluşturduğunuz secret ile doldurmalısınız.
    
    Örnek:
-   ```yaml
+   ```
    spec:
      containers:
      - name: myapp-container

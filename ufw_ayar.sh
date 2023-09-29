@@ -17,8 +17,8 @@ ufw --force reset
 # Kapatmak veya açmak istediğiniz portları buraya ekleyin.
 # Örnek: Kapatmak istediğiniz portlar -> PORTS_TO_DENY=(53 80)
 #        Açmak istediğiniz portlar -> PORTS_TO_ALLOW=(8080 9000)
-PORTS_TO_DENY=() 
-declare -a PORTS_TO_ALLOW=("953" "53" "3030" "3306" "4190" "53" "37527" "12346" "53" "53" "80" "443" "8443" "143" "110" "32768" "22" "25" "7081" "7080")
+PORTS_TO_DENY=(32768) 
+declare -a PORTS_TO_ALLOW=("21" "22" "25" "53" "106" "110" "143" "465" "953" "993" "995" "3030" "3306" "4190" "7080" "7081" "8443" "8880" "12346" "12768" "35799" "40785")
 
 # Bağlantıları kaptmak için döngü
 for port in "${PORTS_TO_DENY[@]}"
@@ -41,3 +41,4 @@ ufw reload
 ufw enable
 ufw status
 echo "UFW kuralları başarıyla güncellendi."
+

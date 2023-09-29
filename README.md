@@ -55,8 +55,8 @@ sudo chmod 600 /etc/crontab #Sadece root kullanıcısının cron yapılandırmas
 ### Firewall setup
 ```bash
 sudo ufw enable
-sudo netstat -an | grep "LISTEN" # Açık olan portları daha kolay bulmak için
-sudo apt-get install net-tools   # Eger “netstat” yüklü degilse
+sudo apt install nmap   # Eger “nmap” yüklü degilse
+sudo nmap -p- -sUT localhost | grep open # Açık olan portları (TCP/UDP)daha kolay bulmak için
 chmod +x ufw_ayar.sh             # ufw_ayar.sh dosyasini klasörde bulabilirsin.
 ./ufw_ayar.sh
 ```
